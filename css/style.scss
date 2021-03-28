@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.container {
+  border: 1px solid;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  position: relative;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+  border: 1px solid;
+}
+.menu_btn {
+  height: 50px;
+  width: 50px;
+  background-color: #eee;
+  position: absolute;
+  right: 0px;
+  span {
+    opacity: 0;
+  }
+}
+.menu_btn::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background-color: #aaa;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  box-shadow: 0px 10px 0px #aaa, 0px -10px 0px #aaa;
+  border-radius: 8px;
+}
+
+#menu_control {
+  position: absolute;
+  opacity: 0;
+}
+#menu_control:checked ~ .header .menu{
+  left:0;
+}
+.menu {
+  top: 50px;
+  list-style: none;
+  width: 80%;
+  height: calc(100vh - 50px);
+  background-color: rgb(83, 74, 74);
+  position: absolute;
+  left: -100%;
+  transition: .5s;
+  a {
+    left: 0;
+    display: block;
+    text-decoration: none;
+    padding: 50px 20px;
+    // background-color: blue;
+    color: #fff;
+    &:hover {
+      background-color: rgb(255, 160, 131);
+    }
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  //100%會換行
+  flex-wrap: wrap;
+}
+.content {
+  width: 70%;
+  border: 1px solid;
+  padding: 20px;
+}
+.sidebar {
+  width: 20%;
+  border: 1px solid;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .content,
+  .sidebar {
+    width: 100%; /* 百分比呈現寬度 */
+  }
+  .content {
+    margin-bottom: 20px;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar img {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width:768px){
+  .menu_btn{
+    display: none;
+  }
+  .header{
+    display: flex;
+    .menu{
+      left: 0;
+      display: flex;
+      position: relative;
+      width: auto;
+      height: auto;
+      top: 0;
+      background-color: rgb(66, 40, 40);
+      a{
+        padding: 14px 20px;
+        overflow: hidden;
+      }
+    }
+  }
+}
